@@ -23,3 +23,5 @@ bool isValid(char* s) {
     free(stack);
     return top==0;
 }
+
+// https://leetcode.com/problems/valid-parentheses/
