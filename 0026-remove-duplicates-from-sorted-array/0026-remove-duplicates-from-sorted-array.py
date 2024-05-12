@@ -5,6 +5,6 @@ class Solution:
             if nums[k] not in l:
                 l.append(nums[k])
             else:
-                nums[k]=99999
+                nums[k]=9999
         nums.sort()
         return len(l)
