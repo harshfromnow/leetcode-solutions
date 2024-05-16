@@ -1,7 +1,9 @@
 class Solution:
     def finalValueAfterOperations(self, operations: List[str]) -> int:
-        A=operations.count("++X")
-        B=operations.count("X++")
-        C=operations.count("--X") 
-        D=operations.count("X--")
-        return A+B-C-D 
+        X=0
+        for k in operations:
+            if k[0]=='-' or k[2]=='-':
+                X-=1
+            elif k[0]=='+' or k[2]=='+':
+                X+=1
+        return X
