@@ -6,11 +6,9 @@ class Solution:
                 if k=="C":
                     record.pop()
                 elif k=="D":
-                    s=record[-1]*2
-                    record.append(s)
+                    record.append(record[-1]*2)
             elif k=='+':
-                s=record[-1]+record[-2]
-                record.append(s)
+                record.append(record[-1]+record[-2])
             else:
                 record.append(int(k))
         return sum(record)
