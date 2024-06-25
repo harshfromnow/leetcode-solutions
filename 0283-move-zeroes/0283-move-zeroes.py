@@ -11,5 +11,6 @@ class Solution:
                 nums.pop(i)
             else:
                 i+=1
-        nums.extend([0]*c)
+        for k in range(c):
+            nums.append(0)
         
