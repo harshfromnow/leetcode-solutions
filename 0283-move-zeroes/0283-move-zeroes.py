@@ -13,4 +13,4 @@ class Solution:
                 i+=1
         for k in range(c):
             nums.append(0)
-        
+        return nums
