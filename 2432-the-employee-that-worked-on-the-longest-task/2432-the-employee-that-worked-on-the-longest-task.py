@@ -1,17 +1,15 @@
 class Solution:
     def hardestWorker(self, n: int, logs: List[List[int]]) -> int:
-        l=[]
-        prev=0
-        for k in range(len(logs)):
-            if k>0:
-                prev=logs[k-1][1]
-            l.append([logs[k][0],logs[k][1]-prev])
-        maxn=0
-        for k in range(len(l)):
-            if l[k][1]>maxn:
-                maxn=l[k][1]
-        p=[]
-        for k in range(len(l)):
-            if l[k][1]==maxn:
-                p.append(l[k][0])
-        return min(p)
+        hard_worker_id = -1
+        begin_time = 0
+        max_working_time = 0
+
+        for id, leave_time in logs:
+            working_time = leave_time - begin_time
+
+            if working_time > max_working_time or (working_time == max_working_time and hard_worker_id > id):
+                hard_worker_id = id
+                max_working_time = working_time
+            begin_time = leave_time
+        
+        return hard_worker_id
