@@ -5,6 +5,36 @@ class Solution:
         """
         Do not return anything, modify board in-place instead.
         """
+        r=len(board)
+        c=len(board[0])
+        def dfs(i,j):
+
+            #return condition
+            if (i<0 or i>=r or 
+                j<0 or j>=c or 
+                board[i][j]!="O"):
+                return
+            
+            #core dfs : mark as 'T' and spredding based on the CONNECT rule
+            board[i][j]="T"
+            for dx,dy in [[1,0],[-1,0],[0,1],[0,-1]]:
+                dfs(i+dx,j+dy)
+
+        #do dfs to every node on boundery
+        for i in range(r):
+            dfs(i,0)
+            dfs(i,c-1)
+        for j in range(1,c-1):
+            dfs(0,j)
+            dfs(r-1,j)
+
+        for i in range(r):
+            for j in range(c):
+                if board[i][j]=="T":
+                    board[i][j]="O"
+                else:
+                    board[i][j]="X"
+        '''
         m=len(board)
         n=len(board[0])
         o="O"
@@ -30,4 +60,4 @@ class Solution:
                 elif board[x][y] == '#':
                     board[x][y] = o # change back to 'O'
 
-        
+        '''
