@@ -1,15 +1,15 @@
 class Solution:
     def numPairsDivisibleBy60(self, time: List[int]) -> int:
-        c=0
+        map={}
         n=len(time)
-        remc={}
-        for t in time:
-            rem=t%60
-            com=(60-rem)%60
-            if com in remc:
-                c+=remc[com]
-            if rem in remc:
-                remc[rem]+=1
+        count=0
+        res=[]
+        for i in range(n):
+            comp = (60-(time[i]%60))%60
+            if comp in map:
+                count+=map[comp]
+            if time[i]%60 in map:
+                map[time[i]%60]+=1
             else:
-                remc[rem]=1
-        return c
+                map[time[i]%60]=1
+        return count
