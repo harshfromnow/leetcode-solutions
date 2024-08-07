@@ -2,8 +2,14 @@ class Solution:
     def numPairsDivisibleBy60(self, time: List[int]) -> int:
         c=0
         n=len(time)
-        for k in range(n):
-            for j in range(k+1,n):
-                if (time[k] + time[j])%60==0:
-                    c+=1
+        remc={}
+        for t in time:
+            rem=t%60
+            com=(60-rem)%60
+            if com in remc:
+                c+=remc[com]
+            if rem in remc:
+                remc[rem]+=1
+            else:
+                remc[rem]=1
         return c
