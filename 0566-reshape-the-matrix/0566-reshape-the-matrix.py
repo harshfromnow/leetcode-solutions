@@ -3,7 +3,7 @@ class Solution:
         m=len(mat)
         n=len(mat[0])
         s=[]
-        if m*n<r*c or r*c<m*n:
+        if m*n!=r*c:
             return mat
         for k in mat:
             s+=k
