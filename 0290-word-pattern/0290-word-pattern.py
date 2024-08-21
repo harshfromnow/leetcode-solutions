@@ -1,24 +1,16 @@
 class Solution:
     def wordPattern(self, pattern: str, s: str) -> bool:
-        l=s.split()
-        if len(pattern)!=len(l):
+        listOfStrings = s.split(' ')
+        list1 = []
+        list2 = []
+
+        for i in pattern:
+            list1.append(pattern.index(i))
+
+        for i in listOfStrings:
+            list2.append(listOfStrings.index(i))
+
+        if list1 == list2:
+            return True
+        else:
             return False
-        m={}
-        for k in range(len(pattern)):
-            if pattern[k] not in m:
-                m[pattern[k]]=[k]
-            else:
-                m[pattern[k]].append(k)
-        print(m)
-        ma={}
-        for k in range(len(l)):
-            if l[k] not in ma:
-                ma[l[k]]=[k]
-            else:
-                ma[l[k]].append(k) 
-        t=ma.values()
-        check=m.values()
-        for j in t:
-            if j not in check:
-                return False
-        return True
